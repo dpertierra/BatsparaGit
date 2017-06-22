@@ -27,9 +27,8 @@ set "gitmensaje= %gitcommit%%mensaje%"
 %gitpush%
 echo se actualizo correctamente
 set /p algomas= Desea hacer otra cosa?
-if %algomas% == "Si" | %algomas% == "si" | %algomas% == "SI"(goto start)
+if %algomas% == "Si" || %algomas% == "si" || %algomas% == "SI"(goto start)
 else(EXIT)
-goto start
 
 
 
@@ -38,11 +37,15 @@ cls
 set gitclone=git clone
 set /p guardaren= Escriba donde desea clonar el repositorio:
 set cd=cd
-set /p linkrepo= Escriba el link del repositorio que desea clonar:
-set "gitcloneconrepo= %gitclone% %linkrepo%"
+set link=https://github.com/
+set barra=/
+set /p usuario= Escriba el usuario donde esta el repositorio que desea clonar:
+set /p repositorio= Escriba el nombre del repositorio que desea clonar:
+set "gitcloneconrepo= %gitclone% %link%%usuario%%barra%%repositorio%"
 set "guardar= %cd% %guardaren%"
 %guardar%
 %gitcloneconrepo%
 echo se clono correctamente
-pause
-goto start
+set /p algomas= Desea hacer otra cosa?
+if %algomas% == "Si" || %algomas% == "si" || %algomas% == "SI"(goto start)
+else(EXIT)
