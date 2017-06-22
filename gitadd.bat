@@ -1,4 +1,9 @@
 @echo off
+set configN=git config --global user.name "Diego Pertierra"
+set configM=git config --global user.email dpertierra@hotmail.com
+%configN%
+%configM%
+cls
 set gitadd=git add
 set gitcommit= git commit -m
 set gitpush= git push
