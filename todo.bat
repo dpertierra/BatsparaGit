@@ -26,9 +26,12 @@ set "gitmensaje= %gitcommit%%mensaje%"
 %gitmensaje%
 %gitpush%
 echo se actualizo correctamente
+pause
+cls
+set si=si
 set /p algomas= Desea hacer otra cosa?
-if %algomas% == "Si" || %algomas% == "si" || %algomas% == "SI"(goto start)
-else(EXIT)
+if %algomas% == %si% goto inicio
+else EXIT
 
 
 
@@ -46,7 +49,26 @@ set "guardar= %cd% %guardaren%"
 %guardar%
 %gitcloneconrepo%
 echo se clono correctamente
+pause
+cls
 set si=si
 set /p algomas= Desea hacer otra cosa?
-if %algomas% == %si% goto start
-else(EXIT)
+if %algomas% == %si% goto inicio
+else EXIT
+
+
+:pull
+cls
+set gpull=git pull
+set /p guardaren= Escriba donde desea pullear:
+set cd=cd
+set "guardar= %cd% %guardaren%"
+%guardar%
+%gpull%
+echo se pulleo correctamente
+pause
+cls
+set si=si
+set /p algomas= Desea hacer otra cosa?
+if %algomas% == %si% goto inicio
+else EXIT
