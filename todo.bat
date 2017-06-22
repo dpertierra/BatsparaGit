@@ -28,10 +28,8 @@ set "gitmensaje= %gitcommit%%mensaje%"
 echo se actualizo correctamente
 pause
 cls
-set si=si
 set /p algomas= Desea hacer otra cosa?
-if %algomas% == %si% goto inicio
-else EXIT
+goto %algomas%
 
 
 
@@ -51,10 +49,8 @@ set "guardar= %cd% %guardaren%"
 echo se clono correctamente
 pause
 cls
-set si=si
 set /p algomas= Desea hacer otra cosa?
-if %algomas% == %si% goto inicio
-else EXIT
+goto %algomas%
 
 
 :pull
@@ -68,7 +64,5 @@ set "guardar= %cd% %guardaren%"
 echo se pulleo correctamente
 pause
 cls
-set si=si
 set /p algomas= Desea hacer otra cosa?
-if %algomas% == %si% goto inicio
-else EXIT
+goto %algomas%
