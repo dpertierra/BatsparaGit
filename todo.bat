@@ -46,6 +46,7 @@ set "guardar= %cd% %guardaren%"
 %guardar%
 %gitcloneconrepo%
 echo se clono correctamente
+set si=si
 set /p algomas= Desea hacer otra cosa?
-if %algomas% == "Si" || %algomas% == "si" || %algomas% == "SI"(goto start)
+if %algomas% == %si% goto start
 else(EXIT)
