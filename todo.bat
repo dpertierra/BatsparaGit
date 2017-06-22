@@ -12,6 +12,7 @@ set configcred= git config --global credential.helper wincred
 %configcred%
 cls
 set gitadd=git add
+set apostrofe='
 set gitcommit= git commit -m
 set gitpush= git push
 set cd=cd
@@ -20,7 +21,7 @@ set /p archivo= Escriba el nombre del archivo que desea agregar:
 set /p mensaje= Escriba el mensaje para el commit:
 set "gitaddconarchivo= %gitadd% %archivo%"
 set "ubicacion= %cd% %dondeestaelarchivo%"
-set "gitmensaje= %gitcommit%%mensaje%"
+set "gitmensaje= %gitcommit% %apostrofe%%mensaje%%apostrofe%"
 %ubicacion%
 %gitaddconarchivo%
 %gitmensaje%
@@ -62,6 +63,52 @@ set "guardar= %cd% %guardaren%"
 %guardar%
 %gpull%
 echo se pulleo correctamente
+pause
+cls
+set /p algomas= Desea hacer otra cosa?
+goto %algomas%
+
+:removefile
+cls
+set rm=git rm
+set cd=cd
+set gitcommit= git commit -m
+set apostrofe='
+set gitpush= git push
+set /p carpeta= ingrese la ubicacion del archivo:
+set /p archivo=ingrese el nombre del archivo que desea eliminar:
+set /p mensaje= Escriba el mensaje para el commit:
+set "ubicacion=%cd% %carpeta%"
+set "eliminar= %archivo%"
+set "gitmensaje= %gitcommit% %apostrofe%%mensaje%%apostrofe%"
+%ubicacion%
+%eliminar%
+%gitmensaje%
+%gitpush%
+pause
+cls
+set /p algomas= Desea hacer otra cosa?
+goto %algomas%
+
+
+
+:removefolder
+cls
+set rm=git rm -r
+set cd=cd
+set apostrofe='
+set gitcommit= git commit -m
+set gitpush= git push
+set /p carpeta= ingrese la ubicacion del archivo:
+set /p archivo=ingrese el nombre de la carpeta que desea eliminar:
+set /p mensaje= Escriba el mensaje para el commit:
+set "ubicacion=%cd% %carpeta%"
+set "eliminar= %archivo%"
+set "gitmensaje= %gitcommit% %apostrofe%%mensaje%%apostrofe%"
+%ubicacion%
+%eliminar%
+%gitmensaje%
+%gitpush%
 pause
 cls
 set /p algomas= Desea hacer otra cosa?
