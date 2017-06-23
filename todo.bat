@@ -1,17 +1,24 @@
 @echo off
 setlocal EnableDelayedExpansion
+
+
 :inicio
 set /p hacer= Que desea hacer?
 goto %hacer%
-
-:add
 set configN=git config --global user.name "Diego Pertierra"
 set configM=git config --global user.email dpertierra@hotmail.com
 set configcred= git config --global credential.helper wincred
 %configN%
 %configM%
 %configcred%
+
+
+
+:add
 cls
+set configN=git config --global user.name "Diego Pertierra"
+set configM=git config --global user.email dpertierra@hotmail.com
+set configcred= git config --global credential.helper wincred
 set gitadd=git add
 set gitcommit= git commit -m 
 set gitpush= git push
@@ -19,9 +26,13 @@ set cd=cd
 set /p dondeestaelarchivo= Escriba donde esta el archivo o la carpeta que desea agregar:
 set /p archivo= Escriba el nombre del archivo que desea agregar:
 set /p mensaje= Escriba el mensaje para el commit:
+set mensaje= "%mensaje%"
 set "gitaddconarchivo= %gitadd% %archivo%"
 set "ubicacion= %cd% %dondeestaelarchivo%"
-set "gitmensaje= %gitcommit% %mensaje%"
+set gitmensaje= %gitcommit% %mensaje%
+%configN%
+%configM%
+%configcred%
 %ubicacion%
 %gitaddconarchivo%
 %gitmensaje%
