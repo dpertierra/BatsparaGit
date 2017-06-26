@@ -55,7 +55,7 @@ cls
 set gitclone=git clone
 set inicio=inicio
 set /p guardaren= Escriba donde desea clonar el repositorio:
-if %dondeestaelarchivo% equ %inicio% (
+if %guardaren% equ %inicio% (
 cls
 goto inicio
 )
