@@ -3,7 +3,7 @@ setlocal EnableDelayedExpansion
 
 
 :inicio
-echo opciones: add, clone, pull, removefile, removefolder
+echo opciones: add, clone, pull, removefile, removefolder, removefolderonlygit
 set /p hacer= Que desea hacer?
 goto %hacer%
 set configN=git config --global user.name "Diego Pertierra"
@@ -46,7 +46,7 @@ set gitmensaje= %gitcommit% %mensaje%
 echo se actualizo correctamente
 pause
 cls
-echo opciones: add, clone, pull, removefile, removefolder
+echo opciones: add, clone, pull, removefile, removefolder, removefolderonlygit
 set /p algomas= Desea hacer otra cosa?
 goto %algomas%
 
@@ -73,7 +73,7 @@ set "guardar= %cd% %guardaren%"
 echo se clono correctamente
 pause
 cls
-echo opciones: add, clone, pull, removefile, removefolder
+echo opciones: add, clone, pull, removefile, removefolder, removefolderonlygit
 set /p algomas= Desea hacer otra cosa?
 goto %algomas%
 
@@ -94,7 +94,7 @@ set "guardar= %cd% %guardaren%"
 echo se pulleo correctamente
 pause
 cls
-echo opciones: add, clone, pull, removefile, removefolder
+echo opciones: add, clone, pull, removefile, removefolder, removefolderonlygit
 set /p algomas= Desea hacer otra cosa?
 goto %algomas%
 
@@ -123,7 +123,7 @@ set gitmensaje= %gitcommit% %mensaje%
 %gitpush%
 pause
 cls
-echo opciones: add, clone, pull, removefile, removefolder
+echo opciones: add, clone, pull, removefile, removefolder, removefolderonlygit
 set /p algomas= Desea hacer otra cosa?
 goto %algomas%
 
@@ -154,6 +154,34 @@ set gitmensaje= %gitcommit% %mensaje%
 %gitpush%
 pause
 cls
-echo opciones: add, clone, pull, removefile, removefolder
+echo opciones: add, clone, pull, removefile, removefolder, removefolderonlygit
+set /p algomas= Desea hacer otra cosa?
+goto %algomas%
+
+:removefolderonlygit
+cls
+set rm=git rm -r --cached
+set cd=cd
+set gitcommit= git commit -m
+set gitpush= git push
+set inicio=inicio
+set /p carpeta= ingrese la ubicacion del archivo:
+if %carpeta% equ %inicio% (
+cls
+goto inicio
+)
+set /p archivo=ingrese el nombre de la carpeta que desea eliminar:
+set /p mensaje= Escriba el mensaje para el commit:
+set mensaje= "%mensaje%"
+set "ubicacion=%cd% %carpeta%"
+set "eliminar= %rm% %archivo%"
+set gitmensaje= %gitcommit% %mensaje%
+%ubicacion%
+%eliminar%
+%gitmensaje%
+%gitpush%
+pause
+cls
+echo opciones: add, clone, pull, removefile, removefolder, removefolderonlygit
 set /p algomas= Desea hacer otra cosa?
 goto %algomas%
