@@ -3,6 +3,7 @@ setlocal EnableDelayedExpansion
 
 
 :inicio
+echo opciones: add, clone, pull, removefile, removefolder
 set /p hacer= Que desea hacer?
 goto %hacer%
 set configN=git config --global user.name "Diego Pertierra"
@@ -45,6 +46,7 @@ set gitmensaje= %gitcommit% %mensaje%
 echo se actualizo correctamente
 pause
 cls
+echo opciones: add, clone, pull, removefile, removefolder
 set /p algomas= Desea hacer otra cosa?
 goto %algomas%
 
@@ -71,6 +73,7 @@ set "guardar= %cd% %guardaren%"
 echo se clono correctamente
 pause
 cls
+echo opciones: add, clone, pull, removefile, removefolder
 set /p algomas= Desea hacer otra cosa?
 goto %algomas%
 
@@ -91,12 +94,13 @@ set "guardar= %cd% %guardaren%"
 echo se pulleo correctamente
 pause
 cls
+echo opciones: add, clone, pull, removefile, removefolder
 set /p algomas= Desea hacer otra cosa?
 goto %algomas%
 
 :removefile
 cls
-set rm=git rm
+set rm=git rm -f
 set cd=cd
 set gitcommit= git commit -m
 set gitpush= git push
@@ -110,7 +114,7 @@ set /p archivo=ingrese el nombre del archivo que desea eliminar:
 set /p mensaje= Escriba el mensaje para el commit:
 set mensaje= "%mensaje%"
 set "ubicacion=%cd% %carpeta%"
-set "eliminar= %archivo%"
+set "eliminar= %rm% %archivo%"
 set gitmensaje= %gitcommit% %mensaje%
 %gitmensaje%
 %ubicacion%
@@ -119,6 +123,7 @@ set gitmensaje= %gitcommit% %mensaje%
 %gitpush%
 pause
 cls
+echo opciones: add, clone, pull, removefile, removefolder
 set /p algomas= Desea hacer otra cosa?
 goto %algomas%
 
@@ -126,7 +131,8 @@ goto %algomas%
 
 :removefolder
 cls
-set rm=git rm -r
+set rm=git rm
+set rf=-rf 
 set cd=cd
 set gitcommit= git commit -m
 set gitpush= git push
@@ -140,7 +146,7 @@ set /p archivo=ingrese el nombre de la carpeta que desea eliminar:
 set /p mensaje= Escriba el mensaje para el commit:
 set mensaje= "%mensaje%"
 set "ubicacion=%cd% %carpeta%"
-set "eliminar= %archivo%"
+set "eliminar= %rm% %archivo% %rf%"
 set gitmensaje= %gitcommit% %mensaje%
 %ubicacion%
 %eliminar%
@@ -148,5 +154,6 @@ set gitmensaje= %gitcommit% %mensaje%
 %gitpush%
 pause
 cls
+echo opciones: add, clone, pull, removefile, removefolder
 set /p algomas= Desea hacer otra cosa?
 goto %algomas%
