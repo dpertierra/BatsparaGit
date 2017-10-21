@@ -3,19 +3,14 @@ setlocal EnableDelayedExpansion
 
 
 :inicio
-set configN= git config --global user.name "
-set configM=git config --global user.email
-set comilla="
-set /p nombre=ingrese su nombre
-set /p mail=ingrese su mail
-set configcred= git config --global credential.helper wincred
+REM set configN= git config --global user.name "Diego"
+REM set configM=git config --global user.email "dpertierra@hotmail.com"
+REM set configcred= git config --global credential.helper wincred
+REM %configN%
+REM %configM%
+REM %configcred%
 echo opciones: add, clone, pull, removefile, removefolder, removefolderonlygit
 set /p hacer= Que desea hacer?
-set confN = %configN%%nombre%%comilla%
-set confM = %configM%%mail%
-%confN%
-%confM%
-%configcred%
 cls
 goto %hacer%
 
